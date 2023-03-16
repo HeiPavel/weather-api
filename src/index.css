@@ -12,11 +12,20 @@ body,
 
 .weather {
   display: flex;
+  flex-direction: column;
 }
 
 .weather p {
   padding: 5px 15px;
+  margin: 0;
   font-size: 22px;
   font-weight: 700;
+}
+
+.prop-container {
+  display: flex;
+}
+
+.value {
   color: rgb(255, 0, 106);
 }

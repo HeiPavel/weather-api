@@ -1,32 +1,34 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { sendCoordinats } from "../../util/weatherRequest";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { selectWeather, loadData } from "../../features/weather/weatherSlice";
 
 export const Weather = () => {
-    const [city, setCity] = useState('');
-    const [temp, setTemp] = useState('');
-    const [wind, setWind] = useState('');
-    const [weather, setWeather] = useState('');
-
-    const handler = async () => {
-        const fetchData = await sendCoordinats();
-        //console.log('fetchData: ', fetchData);
-        setCity(fetchData.data.name);
-        setTemp(fetchData.data.main.temp);
-        setWind(Math.ceil(fetchData.data.wind.speed));
-        setWeather(fetchData.data.weather[0].main);
-      }
+    const dispatch = useDispatch();
+    const weather = useSelector(selectWeather);
     
       useEffect(() => {
-        handler();
-      }, []);
+        dispatch(loadData());
+      }, [dispatch]);
 
     return (
         <div className="weather">
-            <p>City: {city}</p>
-            <p>Weather: {weather}</p>
-            <p>Temperature: {temp} °C</p>
-            <p>Wind: {wind} m/s</p>
+          <div className="prop-container">
+            <p className="prop">City:</p>
+            <p className="value">{weather.city}</p>
+          </div>
+          <div className="prop-container">
+            <p className="prop">Weather:</p>
+            <p className="value">{weather.weather}</p>
+          </div>
+          <div className="prop-container">
+            <p className="prop">Temperature:</p>
+            <p className="value">{weather.temp} °C</p>
+          </div>
+          <div className="prop-container">
+            <p className="prop">Wind:</p>
+            <p className="value">{weather.wind} m/s</p>
+          </div>
         </div>
     );
 }
