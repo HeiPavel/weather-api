@@ -6,13 +6,14 @@ import { selectWeather, loadData } from "../../features/weather/weatherSlice";
 export const Weather = () => {
     const dispatch = useDispatch();
     const weather = useSelector(selectWeather);
+    const style = {backgroundImage: `url(${weather.icon})`};
     
       useEffect(() => {
         dispatch(loadData());
       }, [dispatch]);
 
     return (
-        <div className="weather">
+        <div className="weather" style={style}>
           <div className="prop-container">
             <p className="prop">City:</p>
             <p className="value">{weather.city}</p>
