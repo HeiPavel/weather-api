@@ -7,7 +7,6 @@ import { selectPhoto, loadPhoto } from "../features/photo/photoSlice";
 function App() {
   const dispatch = useDispatch();
   const photo = useSelector(selectPhoto);
-  console.log(photo);
 
   useEffect(() => {
     dispatch(loadPhoto());
