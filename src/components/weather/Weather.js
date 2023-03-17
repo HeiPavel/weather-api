@@ -36,7 +36,7 @@ export const Weather = () => {
           <div className="minor-weather-data">
             <div className="prop-container">
               <p>Wind:</p>
-              <p><span style={{'--deg': `${weather.deg}deg`}} id="wind">🠟</span> {windDirection(weather.deg)} {round(weather.wind)} m/s</p>
+              <p><span style={{'--deg': `${weather.deg + 90}deg`}} id="wind">➤</span> {windDirection(weather.deg)} {round(weather.wind)} m/s</p>
             </div>
             <div className="prop-container">
               <p>Humidity:</p>
