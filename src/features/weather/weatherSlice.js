@@ -10,9 +10,10 @@ export const loadData = createAsyncThunk('weather/loadData',
             temp: response.data.main.temp,
             humidity: response.data.main.humidity,
             pressure: response.data.main.pressure,
-            wind: Math.ceil(response.data.wind.speed),
+            wind: response.data.wind.speed,
+            deg: response.data.wind.deg,
             weather: response.data.weather[0].main,
-            icon: `http://openweathermap.org/img/w/${response.data.weather[0].icon}.png`
+            icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
         }
     }
 );
@@ -23,17 +24,19 @@ export const weatherSlice = createSlice({
         city: '',
         temp: '',
         wind: '',
+        deg: '',
         humidity: '',
         pressure: '',
         weather: '',
         icon: ''
     },
-    extraReducers: {
-        [loadData.fulfilled]: (state, action) => {
+    extraReducers: (builder) => {
+        builder
+        .addCase(loadData.fulfilled, (state, action) => {
             for (const key in state) {
                 state[key] = action.payload[key];
             }
-        }
+        })
     }
 });
 

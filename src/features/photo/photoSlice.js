@@ -13,10 +13,11 @@ export const photoSlice = createSlice({
     initialState: {
         url: ''
     },
-    extraReducers: {
-        [loadPhoto.fulfilled] : (state, action) => {
+    extraReducers: (builder) =>  {
+        builder
+        .addCase(loadPhoto.fulfilled, (state, action) => {
             state.url = action.payload;
-        }
+        })
     }
 });
 

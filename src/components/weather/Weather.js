@@ -6,8 +6,16 @@ import { selectWeather, loadData } from "../../features/weather/weatherSlice";
 export const Weather = () => {
     const dispatch = useDispatch();
     const weather = useSelector(selectWeather);
-    let temp = Math.floor(weather.temp);
-    temp = (temp <= weather.temp - 0.5) ? Math.ceil(weather.temp) : temp;
+    const round = (prop) => {
+      const floor = Math.floor(prop);
+      return (floor <= prop - 0.5) ? Math.ceil(prop) : floor;
+    }
+
+    const windDirection = (deg) => {
+      const directions = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
+      const index = Math.ceil(deg/22.5) - 1;
+      return directions[index];
+    }
     
       useEffect(() => {
         dispatch(loadData());
@@ -21,14 +29,14 @@ export const Weather = () => {
             </div>
             <div className="basic-weather-data-container">
               <p id="current-weather">{weather.weather}</p>
-              <p id="temp">{temp}</p>
+              <p id="temp">{round(weather.temp)}</p>
               <p id="city">{weather.city}</p>
             </div>
           </div>
           <div className="minor-weather-data">
             <div className="prop-container">
               <p>Wind:</p>
-              <p>{weather.wind} m/s</p>
+              <p><span style={{'--deg': `${weather.deg}deg`}} id="wind">🠟</span> {windDirection(weather.deg)} {round(weather.wind)} m/s</p>
             </div>
             <div className="prop-container">
               <p>Humidity:</p>
