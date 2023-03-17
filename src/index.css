@@ -5,10 +5,13 @@ html,
 body,
 #root {
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-family: 'Oxygen', sans-serif;
+}
+
+body {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 p {
@@ -22,6 +25,8 @@ img {
 
 .weather-card {
   display: flex;
+  float: right;
+  margin: 70px 100px 0 0;
   flex-direction: column;
   border: 1px solid gray;
   border-radius: 15px;

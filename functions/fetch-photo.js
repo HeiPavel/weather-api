@@ -1,9 +1,8 @@
 import fetch from 'node-fetch';
 
 const handler = async (event) => {
-    const {lat, lon} = event.queryStringParameters;
-    const apiKey = process.env.API_KEY;
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+    const apiKey = process.env.PHOTO_API_KEY;
+    const url = `https://api.unsplash.com/photos/random?client_id=${apiKey}`;
     try {
         const response = await fetch(url);
         const jsonResponse = await response.json();
