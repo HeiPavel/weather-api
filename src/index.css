@@ -101,3 +101,62 @@ img {
   width: 16px;
   height: 16px;
 }
+
+@media only screen and (max-width: 460px) {
+  .weather-card {
+    flex-direction: row;
+    margin: 50px auto 0 auto;
+    float: none;
+    width: 80%
+  }
+
+  .icon-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .basic-weather-data {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .basic-weather-data-container {
+    margin-top: 0;
+  }
+  
+  .basic-weather-data-container p {
+    padding-bottom: 0;
+    text-align: center;
+  }
+
+  #temp {
+    line-height: 1.2;
+  }
+
+  #temp::after {
+    top: -5px;
+  }
+
+  .minor-weather-data {
+    justify-content: space-between;
+    flex-grow: 1;
+    padding: 30px 7px;
+    font-size: 0.8rem;
+  }
+
+  #wind {
+    font-size: 0.7rem;
+  }
+
+  .prop-container {
+    flex-direction: column;
+  }
+
+  .prop-container p {
+    text-align: center;
+  }
+
+  .prop-container p:last-child {
+    justify-content: center;
+  }
+}
