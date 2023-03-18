@@ -12,8 +12,12 @@ export const Weather = () => {
     }
 
     const windDirection = (deg) => {
-      const directions = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
-      const index = Math.ceil(deg/22.5) - 1;
+      if (deg > 340 || deg <= 10) return 'N';
+      const directions = ['NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
+      let sector = Math.ceil((deg)/10);
+      const multiplier = Math.floor((sector - 1)/9);
+      if (multiplier >= 1) sector -= multiplier;
+      const index = sector > 1 ? Math.floor(sector/2) - 1 : Math.floor(sector/2);
       return directions[index];
     }
     
