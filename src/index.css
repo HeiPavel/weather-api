@@ -32,11 +32,24 @@ img {
   color: rgb(0, 0, 0);
   top: 70px;
   right: 100px;
+  border-radius: 15px;
+}
+
+.weather-card-inner-container {
+  display: flex;
   flex-direction: column;
+}
+
+.weather-card::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
   border-radius: 15px;
   background-color: rgba(117, 127, 131, 0.4);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(5px);
+  z-index: -1;
 }
 
 .icon-container {
@@ -127,14 +140,73 @@ img {
   height: 16px;
 }
 
+/*Loading component*/
+.loader {
+  width: 200px;
+  height: 300px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  z-index: 99999;
+}
+
+.loader-inner {
+  top: 100px;
+  right: 50px;
+  height: 60px;
+  width: 100px;
+  position: absolute;
+}
+
+.loader-line-wrap {
+  animation: spin 2000ms cubic-bezier(.175, .885, .32, 1.275) infinite;
+  animation-delay: calc(-50ms * var(--delay));
+  box-sizing: border-box;
+  height: 50px;
+  width: 100px;
+  overflow: hidden;
+  position: absolute;
+  transform-origin: 50% 100%;
+}
+.loader-line {
+  position: absolute;
+  border: 4px solid transparent;
+  border-radius: 100%;
+  box-sizing: border-box;
+  height: 100px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100px;
+  filter: contrast(200%);
+  border-color: hsl(calc(60 * var(--mult)), 80%, 60%);
+  height: calc(90px - 14px * var(--mult));
+  width: calc(90px - 14px * var(--mult));
+  top: calc(7px + 7px * var(--mult));
+}
+
+@keyframes spin {
+  0%, 15% {
+  transform: rotate(0);
+}
+100% {
+  transform: rotate(360deg);
+}
+}
+
 @media only screen and (max-width: 460px) {
   .weather-card {
-    flex-direction: row;
-    margin: 0 auto;;
+    margin: 0 auto;
     top: 40px;
     right: 0;
     float: none;
     width: 80%
+  }
+
+  .weather-card-inner-container {
+    flex-direction: row;
+    flex-grow: 1;
   }
 
   .basic-weather-data {
@@ -197,6 +269,16 @@ img {
 
   .prop-container p:last-child {
     justify-content: center;
+  }
+
+  .loader {
+    width: 150px;
+    height: 150px;
+  }
+
+  .loader-inner {
+    top: 30px;
+    right: 25px;
   }
 }
 

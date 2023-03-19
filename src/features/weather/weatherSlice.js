@@ -29,7 +29,8 @@ export const weatherSlice = createSlice({
             humidity: '',
             pressure: '',
             weather: '',
-            icon: ''
+            icon: '',
+            isLoading: false
         },
         date: {
             day: '',
@@ -49,9 +50,12 @@ export const weatherSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+        .addCase(loadData.pending, state => {
+            state.weather['isLoading'] = true;
+        })
         .addCase(loadData.fulfilled, (state, action) => {
             for (const key in state.weather) {
-                state.weather[key] = action.payload[key];
+                (key !== 'isLoading') ? state.weather[key] = action.payload[key] : state.weather['isLoading'] = false;
             }
         })
     }
