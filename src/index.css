@@ -5,6 +5,7 @@ html,
 body,
 #root {
   height: 100%;
+  position: relative;
   font-family: 'Battambang', cursive, sans-serif;
   font-size: 18px;
 }
@@ -25,10 +26,12 @@ img {
 }
 
 .weather-card {
+  position: relative;
   display: flex;
   float: right;
   color: rgb(0, 0, 0);
-  margin: 70px 100px 0 0;
+  top: 70px;
+  right: 100px;
   flex-direction: column;
   border-radius: 15px;
   background-color: rgba(117, 127, 131, 0.4);
@@ -127,7 +130,9 @@ img {
 @media only screen and (max-width: 460px) {
   .weather-card {
     flex-direction: row;
-    margin: 50px auto 0 auto;
+    margin: 0 auto;;
+    top: 40px;
+    right: 0;
     float: none;
     width: 80%
   }
@@ -137,8 +142,23 @@ img {
     gap: 0;
   }
 
+  .date {
+    position: absolute;
+    right: 10%;
+    top: 10%;
+  }
+
+  #time {
+    font-size: 2rem;
+    line-height: 1.3;
+  }
+
   .basic-weather-data-container {
     margin-top: 0;
+  }
+
+  #current-weather {
+    margin-bottom: 5px;
   }
   
   .basic-weather-data-container p {
@@ -148,6 +168,7 @@ img {
 
   #temp {
     line-height: 1.2;
+    font-size: 2.8rem;
   }
 
   #temp::after {
@@ -155,9 +176,10 @@ img {
   }
 
   .minor-weather-data {
-    justify-content: space-between;
+    justify-content: flex-end;
     flex-grow: 1;
-    padding: 30px 7px;
+    align-items: stretch;
+    padding: 10px 15px;
     font-size: 0.8rem;
   }
 
@@ -166,7 +188,7 @@ img {
   }
 
   .prop-container {
-    flex-direction: column;
+    padding: 0;
   }
 
   .prop-container p {
@@ -175,5 +197,11 @@ img {
 
   .prop-container p:last-child {
     justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .weather-card {
+    width: 95%;
   }
 }
