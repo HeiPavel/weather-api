@@ -1,35 +1,41 @@
-import React from "react";
+import React, {useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { selectWeather, loadData } from "../../features/weather/weatherSlice";
+import { selectWeather, loadData, addDate, selectDate } from "../../features/weather/weatherSlice";
+import { round, windDirection, getCurrentDate } from "../../util/util";
 
 export const Weather = () => {
     const dispatch = useDispatch();
     const weather = useSelector(selectWeather);
-    const round = (prop) => {
-      const floor = Math.floor(prop);
-      return (floor <= prop - 0.5) ? Math.ceil(prop) : floor;
-    }
+    const {day, month, weekday, hours, minutes} = useSelector(selectDate);
+    const [seconds, setSeconds] = useState(0);
 
-    const windDirection = (deg) => {
-      if (deg > 340 || deg <= 10) return 'N';
-      const directions = ['NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
-      let sector = Math.ceil((deg)/10);
-      const multiplier = Math.floor((sector - 1)/9);
-      if (multiplier >= 1) sector -= multiplier;
-      const index = sector > 1 ? Math.floor(sector/2) - 1 : Math.floor(sector/2);
-      return directions[index];
-    }
-    
-      useEffect(() => {
-        dispatch(loadData());
-      }, [dispatch]);
+    useEffect(() => {
+      dispatch(loadData());
+      const date = getCurrentDate();
+      dispatch(addDate(date));
+    }, [dispatch]);
+
+    useEffect(() => {
+      const intervalId = setInterval(() => {
+        const date = getCurrentDate();
+        setSeconds(60 - date.seconds);
+        dispatch(addDate(date));
+      }, seconds * 1000);
+      return () => {
+        clearInterval(intervalId);
+      }
+    }, [dispatch, seconds]);
 
     return (
         <div className="weather-card">
           <div className="basic-weather-data">
             <div className="icon-container">
               <img src={weather.icon} alt="" />
+              <div className="date">
+                <p id="time">{hours < 10 ? '0' + hours: hours}:{minutes < 10 ? '0' + minutes : minutes}</p>
+                <p id="current-day">{weekday}, {day} {month}</p>
+              </div>
             </div>
             <div className="basic-weather-data-container">
               <p id="current-weather">{weather.weather}</p>

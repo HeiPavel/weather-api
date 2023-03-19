@@ -21,25 +21,45 @@ export const loadData = createAsyncThunk('weather/loadData',
 export const weatherSlice = createSlice({
     name: 'weather',
     initialState: {
-        city: '',
-        temp: '',
-        wind: '',
-        deg: '',
-        humidity: '',
-        pressure: '',
-        weather: '',
-        icon: ''
+        weather: {
+            city: '',
+            temp: '',
+            wind: '',
+            deg: '',
+            humidity: '',
+            pressure: '',
+            weather: '',
+            icon: ''
+        },
+        date: {
+            day: '',
+            month: '',
+            weekday: '',
+            hours: '',
+            minutes: '',
+            seconds: ''
+        }
+    },
+    reducers: {
+        addDate: (state, action) => {
+            for (const key in state.date) {
+                state.date[key] = action.payload[key];
+            }
+        }
     },
     extraReducers: (builder) => {
         builder
         .addCase(loadData.fulfilled, (state, action) => {
-            for (const key in state) {
-                state[key] = action.payload[key];
+            for (const key in state.weather) {
+                state.weather[key] = action.payload[key];
             }
         })
     }
 });
 
-export const selectWeather = (state) => state.weather;
+export const selectWeather = (state) => state.weather.weather;
+export const selectDate = (state) => state.weather.date;
 
 export default weatherSlice.reducer;
+
+export const {addDate} = weatherSlice.actions;

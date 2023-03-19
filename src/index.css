@@ -36,26 +36,48 @@ img {
   backdrop-filter: blur(5px);
 }
 
+.icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#time {
+  font-size: 2.2rem;
+}
+
 .basic-weather-data {
   display: flex;
   justify-content: space-between;
   gap: 15px;
   padding: 10px;
+  padding-top: 0;
 }
 
 .basic-weather-data-container {
-  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .basic-weather-data-container p {
-  padding-bottom: 5px;
-  text-align: right;
+  text-align: center;
+}
+
+#current-weather {
+  margin-bottom: 20px;
 }
 
 #temp {
   font-size: 3.2rem;
   position: relative;
-  text-align: center;
+  line-height: 1.3;
 }
 
 #temp::after {
@@ -67,7 +89,7 @@ img {
   top: 3px;
 }
 
-#city {
+#city, #current-day {
   font-size: 0.9rem;
 }
 
@@ -108,11 +130,6 @@ img {
     margin: 50px auto 0 auto;
     float: none;
     width: 80%
-  }
-
-  .icon-container {
-    display: flex;
-    justify-content: center;
   }
 
   .basic-weather-data {
