@@ -4,9 +4,8 @@ import { sendCoordinats } from '../../util/weatherRequest';
 export const loadData = createAsyncThunk('weather/loadData',
     async () => {
         const response = await sendCoordinats();
-        const region = new Intl.DisplayNames(['en'], { type: 'region' });
         return {
-            city: `${response.data.name}, ${region.of(response.data.sys.country)}`,
+            city: `${response.data.name}, ${response.data.sys.country}`,
             temp: response.data.main.temp,
             humidity: response.data.main.humidity,
             pressure: response.data.main.pressure,

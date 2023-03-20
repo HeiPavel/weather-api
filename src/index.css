@@ -35,11 +35,6 @@ img {
   border-radius: 15px;
 }
 
-.weather-card-inner-container {
-  display: flex;
-  flex-direction: column;
-}
-
 .weather-card::before {
   content: "";
   position: absolute;
@@ -52,10 +47,26 @@ img {
   z-index: -1;
 }
 
+#location {
+  padding-top: 10px;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.weather-card-inner-container {
+  padding: 0 15px;
+}
+
+.weather-card-inner-container, .weather-information {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
 .icon-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .date {
@@ -66,20 +77,18 @@ img {
 
 #time {
   font-size: 2.2rem;
+  line-height: 1.25;
 }
 
 .basic-weather-data {
   display: flex;
   justify-content: space-between;
-  gap: 15px;
-  padding: 10px;
-  padding-top: 0;
+  gap: 30px;
 }
 
 .basic-weather-data-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
 }
 
 .basic-weather-data-container p {
@@ -87,7 +96,8 @@ img {
 }
 
 #current-weather {
-  margin-bottom: 20px;
+  padding: 10px;
+  padding-bottom: 0;
 }
 
 #temp {
@@ -105,21 +115,20 @@ img {
   top: 3px;
 }
 
-#city, #current-day {
+#current-day {
   font-size: 0.9rem;
 }
 
 .minor-weather-data {
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  padding-bottom: 10px;
   font-size: 0.9rem;
 }
 
 .prop-container {
   display: flex;
   justify-content: space-between;
-  padding: 3px 0;
 }
 
 .prop-container p:last-child {
@@ -201,23 +210,40 @@ img {
     top: 40px;
     right: 0;
     float: none;
-    width: 85%
+    width: 85%;
+    height: 225px;
   }
 
-  .weather-card-inner-container {
+  #location {
+    padding-top: 5px;
+  }
+
+  .weather-information {
     flex-direction: row;
-    flex-grow: 1;
+    justify-content: flex-end;
   }
 
   .basic-weather-data {
+    position: absolute;
+    top: 40px;
+    left: 10px;
     flex-direction: column;
     gap: 0;
   }
 
+  .icon-container {
+    height: 60px;
+    align-items: center;
+  }
+
+  .icon-container img {
+    overflow-y: hidden;
+  }
+
   .date {
     position: absolute;
-    right: 10%;
-    top: 10%;
+    right: 15%;
+    top: 20%;
   }
 
   #time {
@@ -230,6 +256,7 @@ img {
   }
 
   #current-weather {
+    padding: 0;
     margin-bottom: 5px;
   }
   
@@ -239,8 +266,8 @@ img {
   }
 
   #temp {
-    line-height: 1.2;
     font-size: 2.8rem;
+    line-height: 1.2;
   }
 
   #temp::after {
@@ -250,10 +277,10 @@ img {
   .minor-weather-data {
     justify-content: flex-end;
     flex-grow: 1;
-    align-items: stretch;
-    padding: 10px 15px;
+    padding: 10px 0;
     padding-left: 10px;
     font-size: 0.8rem;
+    max-width: 65%;
   }
 
   #wind {
@@ -294,9 +321,13 @@ img {
     width: 98%;
   }
 
+  .weather-card-inner-container {
+    padding: 0 10px;
+  }
+
   .minor-weather-data {
     padding: 10px;
     padding-left: 7px;
-    font-size: 0.75rem;
+    max-width: 60%;
   }
 }
