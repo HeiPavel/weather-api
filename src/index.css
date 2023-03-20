@@ -201,7 +201,7 @@ img {
     top: 40px;
     right: 0;
     float: none;
-    width: 80%
+    width: 85%
   }
 
   .weather-card-inner-container {
@@ -252,6 +252,7 @@ img {
     flex-grow: 1;
     align-items: stretch;
     padding: 10px 15px;
+    padding-left: 10px;
     font-size: 0.8rem;
   }
 
@@ -284,6 +285,11 @@ img {
 
 @media only screen and (max-width: 360px) {
   .weather-card {
-    width: 95%;
+    width: 96%;
+  }
+
+  .minor-weather-data {
+    padding: 10px;
+    padding-left: 7px;
   }
 }
