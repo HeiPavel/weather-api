@@ -3,10 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectWeather, loadData, addDate, selectDate } from "../../features/weather/weatherSlice";
 import { round, windDirection, getCurrentDate } from "../../util/util";
 import { Loading } from "../loading/Loading";
+import { Error } from "../error/Error";
 
 export const Weather = () => {
     const dispatch = useDispatch();
-    const {city, temp, wind, deg, humidity, pressure, weather, icon, isLoading} = useSelector(selectWeather);
+    const {city, temp, wind, deg, humidity, pressure, weather, icon, isLoading, isError} = useSelector(selectWeather);
     const {day, month, weekday, hours, minutes, seconds} = useSelector(selectDate);
 
     useEffect(() => {
@@ -66,7 +67,7 @@ export const Weather = () => {
 
     return (
         <div className="weather-card">
-          {isLoading ? <Loading /> : loadedWeatherCard()}
+          {isLoading ? <Loading /> : isError ? <Error /> : loadedWeatherCard()}
         </div>
     );
 }
