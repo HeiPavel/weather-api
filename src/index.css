@@ -283,13 +283,20 @@ img {
   }
 }
 
+@media only screen and (max-width: 380px) {
+  .weather-card {
+    width: 90%;
+  }
+}
+
 @media only screen and (max-width: 360px) {
   .weather-card {
-    width: 96%;
+    width: 98%;
   }
 
   .minor-weather-data {
     padding: 10px;
     padding-left: 7px;
+    font-size: 0.75rem;
   }
 }
