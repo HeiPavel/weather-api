@@ -2,7 +2,9 @@ import fetch from 'node-fetch';
 
 const handler = async (event) => {
     const apiKey = process.env.PHOTO_API_KEY;
-    const url = `https://api.unsplash.com/photos/random?client_id=${apiKey}`;
+    const {month, page} = event.queryStringParameters;
+    const query = `nature ${month}`;
+    const url = `https://api.unsplash.com/search/photos?client_id=${apiKey}&query=${query}&page=${page}&per_page=30`;
     try {
         const response = await fetch(url);
         const jsonResponse = await response.json();

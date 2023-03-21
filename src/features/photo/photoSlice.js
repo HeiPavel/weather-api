@@ -3,8 +3,9 @@ import { fetchPhoto } from '../../util/photoRequest';
 
 export const loadPhoto = createAsyncThunk('photo/loadPhoto',
     async () => {
+        const index = Math.floor(Math.random() * 30);
         const response = await fetchPhoto();
-        return response.data.urls.regular;
+        return response.data.results[index].urls.regular;
     }
 );
 
