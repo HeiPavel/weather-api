@@ -3,6 +3,7 @@ import { Weather } from "../components/weather/Weather";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectPhoto, loadPhoto } from "../features/photo/photoSlice";
+import { NotesForm } from "../components/notesForm/NotesForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,7 +19,10 @@ function App() {
   }, [photo.url]);
 
   return (
-    <Weather />
+    <>
+      <Weather />
+      <NotesForm />
+    </>
   );
 }
 

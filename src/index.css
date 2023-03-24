@@ -4,7 +4,7 @@
 html,
 body,
 #root {
-  height: 100%;
+  min-height: 100%;
   position: relative;
   font-family: 'Battambang', cursive, sans-serif;
   font-size: 18px;
@@ -25,17 +25,20 @@ img {
   filter: contrast(200%) saturate(200%);
 }
 
+.container {
+  display: grid;
+}
+
 .weather-card {
   position: relative;
+  margin: 70px 100px 0 0;
   display: flex;
-  float: right;
+  justify-self: end;
   color: rgb(0, 0, 0);
-  top: 70px;
-  right: 100px;
   border-radius: 15px;
 }
 
-.weather-card::before {
+.blur::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -210,6 +213,65 @@ img {
   filter: contrast(200%);
 }
 
+/*Notes container*/
+.notes-container {
+  position: relative;
+  margin: 50px auto 0 auto;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+.notes-container form {
+  margin-top: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.notes-container input {
+  padding: 15px;
+  font-size: 1.8rem;
+  color:rgb(0, 0, 0);
+  width: 60%;
+  background-color: transparent;
+  border-color: aliceblue;
+  outline: none;
+  border-radius: 8px;
+}
+
+.notes-container button {
+  padding: 0 5px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.notes-container input::placeholder {
+  color: white;
+  opacity: 0.7;
+  font-weight: 100;
+}
+
+.tasks {
+  display: flex;
+  padding: 0 20px;
+  align-items: center;
+  min-height: 200px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid orangered;
+  border-radius: 5px;
+}
+
 @keyframes spin {
   0%, 15% {
   transform: rotate(0);
@@ -221,10 +283,8 @@ img {
 
 @media only screen and (max-width: 460px) {
   .weather-card {
-    margin: 0 auto;
-    top: 40px;
-    right: 0;
-    float: none;
+    margin: 40px 0 0 0;
+    justify-self: center;
     width: 85%;
     height: 225px;
   }

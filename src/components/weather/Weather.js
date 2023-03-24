@@ -66,8 +66,10 @@ export const Weather = () => {
     }
 
     return (
-        <div className="weather-card">
+      <div className="container">
+        <div className="weather-card blur">
           {isLoading ? <Loading /> : isError ? <Error /> : loadedWeatherCard()}
         </div>
+      </div>
     );
 }
