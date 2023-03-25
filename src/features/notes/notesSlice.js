@@ -18,6 +18,10 @@ export const notesSlice = createSlice({
         removeNote: (state, action) => {
             const notes = state.notes.filter(note => note.id !== action.payload);
             state.notes = [...notes];
+        },
+        toogleNote: (state, action) => {
+            const note = state.notes.find(note => note.id === action.payload);
+            note.isDone = !note.isDone;
         }
     }
 });
@@ -27,4 +31,4 @@ export const selectNotes = state => state.notes.notes;
 
 export default notesSlice.reducer;
 
-export const {createNote, addNote, removeNote} = notesSlice.actions;
+export const {createNote, addNote, removeNote, toogleNote} = notesSlice.actions;

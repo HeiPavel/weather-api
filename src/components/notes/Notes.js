@@ -14,6 +14,7 @@ export const Notes = () => {
                         key={note.id}
                         id={note.id}
                         note={note.note}
+                        isDone={note.isDone}
                     />
                 );
             })} 

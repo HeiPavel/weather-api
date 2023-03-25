@@ -276,6 +276,11 @@ img {
   justify-content: center;
   align-items: center;
   border-radius: 15px;
+  transition: filter 0.3s ease;
+}
+
+.done {
+  filter: contrast(50%);
 }
 
 .note-container p {
