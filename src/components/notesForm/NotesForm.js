@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { createNote, addNote } from "../../features/notes/notesSlice";
 import { selectNote } from "../../features/notes/notesSlice";
 import { Notes } from "../notes/Notes";
+import {v4 as uuidv4} from 'uuid';
 
 export const NotesForm = () => {
     const dispatch = useDispatch();
@@ -17,7 +18,7 @@ export const NotesForm = () => {
         if (note.length === 0) {
             return;
         }
-        dispatch(addNote(note));
+        dispatch(addNote({id: uuidv4(), note: note}));
         dispatch(createNote(''));
     }
 
@@ -32,9 +33,7 @@ export const NotesForm = () => {
                 />
                 <button>Add</button>
             </form>
-            <div className="tasks">
-                <Notes />
-            </div>
+            <Notes />
         </div>
     );
 }

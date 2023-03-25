@@ -7,15 +7,16 @@ export const Notes = () => {
     const notes = useSelector(selectNotes);
 
     return (
-        <>
-            {notes.map((note, index) => {
+        <div className="tasks">
+            {notes.map((note) => {
                 return (
                     <Note
-                        key={index}
-                        note={note}
+                        key={note.id}
+                        id={note.id}
+                        note={note.note}
                     />
                 );
-            })}
-        </>
+            })} 
+        </div>
     );
 }

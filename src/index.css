@@ -267,9 +267,57 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
-  border: 1px solid orangered;
-  border-radius: 5px;
+}
+
+.note-container {
+  position: relative;
+  padding: 15px 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.note-container p {
+  z-index: 5;
+  font-size: 1.1rem;
+}
+
+.note .blur::before {
+  background-color: orangered;
+  z-index: 0;
+}
+
+.button-container {
+  position: absolute;
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  top: -21px;
+  right: 7px;
+  border-radius: 3px;
+  z-index: 1;
+  /*transform: translateY(0);
+  transition: transform 0.4s ease;*/
+}
+
+/*.note:hover .button-container {
+  transform: translateY(-21px);
+}*/
+
+.remove-button, .done-button {
+  border-radius: 7px;
+  padding: 0 2px;
+  cursor: pointer;
+} 
+
+.remove-button {
+  background-color: rgba(226, 9, 9, 0.5);
+}
+
+.done-button {
+  background-color: rgba(9, 226, 74, 0.5);
 }
 
 @keyframes spin {
