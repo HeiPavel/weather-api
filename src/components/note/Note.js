@@ -15,12 +15,12 @@ export const Note = ({note, id, isDone}) => {
 
     return (
         <div className="note">
-            <div className={isDone ? "note-container blur done" : "note-container blur"}>
-                <div className="button-container">
-                    <div className="remove-button" onClick={() => handleRemoveNote()}>remove</div>
-                    <div className="done-button" onClick={() => {handleTogleNote()}}>{isDone ? 'keep' : 'done'}</div>
-                </div>
+            <div className={isDone ? "note-container done" : "note-container"}>
                 <p>{note}</p>
+            </div>
+            <div className={isDone ? "button-container done" : "button-container"}>
+                <div className="remove-button" onClick={() => handleRemoveNote()}>remove</div>
+                <div className="done-button" onClick={() => {handleTogleNote()}}>{isDone ? 'keep' : 'done'}</div>
             </div>
         </div>
     );

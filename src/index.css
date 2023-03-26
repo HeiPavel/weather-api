@@ -223,11 +223,14 @@ img {
 }
 
 .notes-container form {
+  position: relative;
   margin-top: 30px;
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 15px;
+  height: 56px;
 }
 
 .input-label {
@@ -276,42 +279,56 @@ img {
   color: rgb(58, 22, 214);
 }
 
-.notes-container button {
-  padding: 0 5px;
-  border-radius: 5px;
-  font-size: 1.2rem;
+#note-button {
+  position: relative;
+  padding: 0 10px;
+  height: 50px;
+  border: 2px solid rgb(86, 7, 150);
+  background-color: rgba(58, 22, 214, 0.5);
+  box-shadow: 5px 15px 10px rgba(0, 0, 0, 0.7);
+  font-size: 1rem;
+  border-radius: 4px;
   cursor: pointer;
+  transform: translateY(0);
+  transition: all 0.15s ease;
 }
 
-.notes-container input::placeholder {
-  color: white;
-  opacity: 0.7;
-  font-weight: 100;
+#note-button:active {
+  transform: translateY(3px);
+  box-shadow: 2px 10px 10px rgba(0, 0, 0, 0.7);
 }
 
 .tasks {
+  margin-top: 40px;
   display: flex;
-  padding: 0 20px;
-  align-items: center;
-  min-height: 200px;
-  gap: 20px;
+  padding: 20px 20px;
+  min-height: 120px;
+  row-gap: 40px;
+  column-gap: 20px;
   flex-wrap: wrap;
+  flex-grow: 1;
+  align-content: flex-start;
 }
 
 .note {
+  position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  z-index: 2;
 }
 
 .note-container {
   position: relative;
-  padding: 15px 35px;
+  min-width: 110px;
+  height: 70px;
+  padding: 0 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 15px;
+  border-radius: 10px;
   transition: filter 0.3s ease;
+  background-color: rgb(61, 63, 185);
+  box-shadow: 4px 10px 10px rgba(0, 0, 0, 0.7);
 }
 
 .done {
@@ -319,13 +336,7 @@ img {
 }
 
 .note-container p {
-  z-index: 5;
   font-size: 1.1rem;
-}
-
-.note .blur::before {
-  background-color: orangered;
-  z-index: 0;
 }
 
 .button-container {
@@ -335,16 +346,10 @@ img {
   justify-content: space-between;
   font-size: 0.8rem;
   top: -21px;
-  right: 7px;
+  right: 10px;
   border-radius: 3px;
-  z-index: 1;
-  /*transform: translateY(0);
-  transition: transform 0.4s ease;*/
+  z-index: -1;
 }
-
-/*.note:hover .button-container {
-  transform: translateY(-21px);
-}*/
 
 .remove-button, .done-button {
   border-radius: 7px;

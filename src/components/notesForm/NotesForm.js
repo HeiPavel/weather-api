@@ -35,7 +35,7 @@ export const NotesForm = () => {
                     />
                     <span id="placeholder">Create note</span>
                 </label>
-                <button>Add</button>
+                <button id="note-button">Add note</button>
             </form>
             <Notes />
         </div>
