@@ -25,12 +25,16 @@ export const NotesForm = () => {
     return (
         <div className="notes-container blur">
             <form onSubmit={handleAddNote}>
-                <input 
-                    type="text"
-                    placeholder="Create a note"
-                    value={note}
-                    onChange={(event) => handleCreateNote(event)}
-                />
+                <label htmlFor="input" className="input-label">
+                    <input 
+                        id="input"
+                        type="text"
+                        placeholder="&nbsp;"
+                        value={note}
+                        onChange={(event) => handleCreateNote(event)}
+                    />
+                    <span id="placeholder">Create note</span>
+                </label>
                 <button>Add</button>
             </form>
             <Notes />

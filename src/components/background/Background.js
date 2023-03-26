@@ -7,12 +7,10 @@ export const Background = () => {
     const photo = useSelector(selectPhoto);
 
     useEffect(() => {
-        console.log('hello1');
         dispatch(loadPhoto());
     }, [dispatch]);
 
     useEffect(() => {
-        console.log('hello2');
         const body = document.body;
         body.style.backgroundImage = `url(${photo.url})`;
     }, [photo.url]);
