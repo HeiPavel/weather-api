@@ -32,6 +32,7 @@ export const NotesForm = () => {
                         placeholder="&nbsp;"
                         value={note}
                         onChange={(event) => handleCreateNote(event)}
+                        maxLength="25"
                     />
                     <span id="placeholder">Create note</span>
                 </label>

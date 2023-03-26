@@ -224,6 +224,7 @@ img {
 
 .notes-container form {
   position: relative;
+  box-sizing: border-box;
   margin-top: 30px;
   width: 100%;
   display: flex;
@@ -485,16 +486,40 @@ img {
   .message {
     font-size: 1rem;
   }
+
+  .notes-container {
+    width: 85%;
+  }
+
+  .notes-container form {
+    width: 100%;
+    padding: 0 10px;
+    justify-content: space-between;
+  }
+
+  .input-label {
+    flex-grow: 1;
+  }
+
+  .tasks {
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+  }
+
+  .done-button, #note-button {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 @media only screen and (max-width: 380px) {
-  .weather-card {
+  .weather-card, .notes-container {
     width: 90%;
   }
 }
 
 @media only screen and (max-width: 360px) {
-  .weather-card {
+  .weather-card, .notes-container {
     width: 98%;
   }
 
