@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Battambang:wght@100;300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,400;0,500;1,300;1,400;1,500&display=swap');
 
 html,
 body,
@@ -359,11 +360,44 @@ img {
 } 
 
 .remove-button {
-  background-color: rgba(226, 9, 9, 0.5);
+  background-color: rgba(226, 9, 9, 0.6);
 }
 
 .done-button {
-  background-color: rgba(9, 226, 74, 0.5);
+  background-color: rgba(9, 226, 74, 0.6);
+}
+
+/*Quote component*/
+footer {
+  margin-top: 100px;
+  font-family: 'Livvic', sans-serif;
+}
+
+footer .blur::before {
+  border-radius: 0;
+}
+
+.quote-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 30px;
+  gap: 10px;
+}
+
+#quote {
+  max-width: 1200px;
+  font-size: 1.3rem;
+  font-style: italic;
+  text-align: justify;
+}
+
+#author {
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 
 @keyframes spin {
@@ -509,6 +543,14 @@ img {
 
   .done-button, #note-button {
     -webkit-tap-highlight-color: transparent;
+  }
+
+  .quote-container {
+    padding: 20px;
+  }
+
+  #quote {
+    font-size: 1.1rem;
   }
 }
 
