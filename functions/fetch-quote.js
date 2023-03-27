@@ -1,14 +1,9 @@
 import fetch from "node-fetch";
 
 const handler = async (event) => {
-    const apiKey = process.env.QUOTE_API_KEY;
-    const url = 'https://api.api-ninjas.com/v1/quotes?category=knowledge';
-    const option = {
-        method: 'GET',
-        headers: { 'X-Api-Key': apiKey}
-    };
+    const url = 'https://api.quotable.io/random?tags=philosophy|history|technology|famous-quotes&maxLength=140';
     try {
-        const response = await fetch(url, option);
+        const response = await fetch(url);
         const json = await response.json();
         return {
             statusCode: 200,

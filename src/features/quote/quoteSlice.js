@@ -5,8 +5,8 @@ export const loadQuote = createAsyncThunk('quote/loadQuote',
     async () => {
         const response = await fetchQuote();
         return {
-            quote: response.data[0].quote,
-            author: response.data[0].author
+            quote: response.data.content,
+            author: response.data.author
         };
     }
 );
@@ -16,13 +16,23 @@ export const quoteSlice = createSlice({
     initialState: {
         quote: {
             quote: '',
-            author: ''
+            author: '',
+            isLoading: false,
+            isError: false
         }
     },
     extraReducers: (builder) => {
         builder
+        .addCase(loadQuote.pending, state => {
+            state.quote.isLoading = true;
+            state.quote.isError = false;
+        })
         .addCase(loadQuote.fulfilled, (state, action) => {
-            state.quote = {...action.payload};
+            state.quote = {...action.payload, isLoading: false, isError: false};
+        })
+        .addCase(loadQuote.rejected, state => {
+            state.quote.isLoading = false;
+            state.quote.isError = true;
         })
     }
 });
