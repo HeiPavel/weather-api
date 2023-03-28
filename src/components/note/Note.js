@@ -18,7 +18,7 @@ export const Note = ({note, id, isDone}) => {
             <div className={isDone ? "note-container done" : "note-container"}>
                 <p>{note}</p>
             </div>
-            <div className={isDone ? "button-container done" : "button-container"}>
+            <div className={isDone ? "button-container done" : "button-container"} translate="no">
                 <div className="remove-button" onClick={() => handleRemoveNote()}>remove</div>
                 <div className="done-button" onClick={() => {handleTogleNote()}}>{isDone ? 'keep' : 'done'}</div>
             </div>

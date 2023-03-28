@@ -303,7 +303,7 @@ img {
 .tasks {
   margin-top: 40px;
   display: flex;
-  padding: 20px 20px 40px 20px;
+  padding: 20px 40px 40px 40px;
   min-height: 120px;
   row-gap: 40px;
   column-gap: 20px;
@@ -554,6 +554,7 @@ footer .error {
   }
 
   .tasks {
+    padding: 20px 20px 40px 20px;
     flex-direction: column;
     align-content: center;
     align-items: center;
