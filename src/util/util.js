@@ -1,15 +1,12 @@
 export const round = (prop) => {
-    const floor = Math.floor(prop);
-    return (floor <= prop - 0.5) ? Math.ceil(prop) : floor;
+    if (prop > -0.5 && prop < 0) return 0;
+    return parseFloat(prop).toFixed();
   }
 
 export const windDirection = (deg) => {
-    if (deg > 340 || deg <= 10) return 'N';
-    const directions = ['NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
-    let sector = Math.ceil((deg)/10);
-    const multiplier = Math.floor((sector - 1)/9);
-    if (multiplier >= 1) sector -= multiplier;
-    const index = sector > 1 ? Math.floor(sector/2) - 1 : Math.floor(sector/2);
+    deg = parseFloat(deg);
+    const directions = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW', 'N'];
+    const index = parseFloat((deg/22.5).toFixed());
     return directions[index];
   }
 
